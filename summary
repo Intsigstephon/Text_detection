@@ -17,5 +17,24 @@
    
    总体来将，是对文字识别end-to-end方向，以及对自然场景文字识别领域通用算法的一次积极的，有成果的探索。
    
+2. end-to-end TextSpotter
+   看了第一篇之后, 对这一篇并没有多大的期待, 但期望越小,往往失望也越小,相反亮点则显得比较突出.
+   总体感觉, 在end-to-end这条路上的一次有意义的探索．
+   文章总体上，　依然采用了级联的结构，　也就是先文字检测，　后文字识别．
+   这样的detection + recogniton的方案，　让我想起了faster-rcnn的 rpn + box regression的结构．
+   detection任务中: 基本上是沿用了EAST的思想，　只不过主干网络由resnet50变为了pvanet(出于速度和准确率的考虑)
+   所以，　依然是两步走战略：　先检测回归出框，　然后结合feature map和文字框回归的结果，　做识别；
+   faster-rcnn是先通过rpn得到proposals, 然后通过后面的网络部分进行精细化的回归和分类
+   何其相似！！
+   
+   为了使得这一思路能够走通，　文章引入了text-alignment layer, 这也是文章最大的创新点．
+   物体检测用ROI pooling或者是ＲＯI alignment, 文字检测则用text-alignment.
+   识别部分并没有太多的新意，　只是加入了字符的ａｔｔｅｎｔｉｏn机制；　（从识别角度讲，　一个趋势是从crnn　＋　CTC转向 attention机制）
+   
+   训练部分：　依然是两阶段训练，　只不过在两个模块都近似达到了optimal的状态下，　再进行整体的训练；　所以依然是先分开训练，　然后再整体训练．
+   工程上：　
+   该论文的一个贡献，　在于end-to-end过程中，　做到了feature share.
+   
+   
    
    
