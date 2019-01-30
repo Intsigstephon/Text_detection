@@ -1,0 +1,8 @@
+＃２０１７－２０１８年的几篇关于识别方面文章的总结
+
+１．　Focusing Attention_Towards Accurate Text Recognition in Natural Images
+   对于识别，　CRNN的出现，　事实上使得识别变得比较容易落地了．
+   文章的亮点在于引入了Focusing Network;
+   基于Attention的识别，　事实上很早之前就有了，　那么问题就在于如何通过引入监督信号，　使得attention更加准确．
+   所以，　主体就是AN + FN. 
+   并没有开源，　所以到底效果如何，　尚不清楚；　从实践落地的角度将，　不合适．
